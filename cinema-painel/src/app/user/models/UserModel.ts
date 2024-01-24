@@ -1,5 +1,5 @@
 import { UserModelDTO } from '../api/dto/UserModel.dto'
-
+// percorre cada chave e cria um tipo que possui as mesmas propriedades com os mesmos tipos.
 type UserModelProps = { [P in keyof UserModel]: UserModel[P] }
 
 export class UserModel {
@@ -16,11 +16,11 @@ export class UserModel {
     this.senha = model.senha
     this.id_tenant = model.id_tenant
   }
-
+  // instancia a propria classe para ser utilizada no endpoint de get.
   static fromDTO(dto: UserModelDTO): UserModel {
     return new UserModel(dto)
   }
-
+  // instancia a propria classe para ser utilizada nos endpoints de put/post
   static toDTO(user: Partial<UserModel>): Partial<UserModelDTO> {
     return {
       id_usuario: user.id_usuario,
